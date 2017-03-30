@@ -3,25 +3,25 @@ import javax.swing.*;
 
 public class ClientGUI extends JFrame {
    
-   // private JFrame jfClientGUI;
-   private final JPanel jpClient;
+    private JFrame jfClientGUI;
+//   private final JPanel jpClient;
+//
+//   private JTextArea jtaClientChatScreen;
+//   private JTextField jtfClient;
+//   private JScrollPane scroll;
+//
+//   private JMenuBar jmbClientMenu;
+//   private JMenu jmUDP;
+//   private JMenu jmTCP;
+//   private JMenu jmExit;
+//
+//   private JPanel jpButtonNorth;
+//   private JButton jbUDP;
+//   private JButton jbTCP;
+//   private JButton jbExit;
    
-   private JTextArea jtaClientChatScreen;
-   private JTextField jtfClient;
-   private JScrollPane scroll;
-   
-   private JMenuBar jmbClientMenu;
-   private JMenu jmUDP;
-   private JMenu jmTCP;
-   private JMenu jmExit;
-   
-   private JPanel jpButtonNorth;
-   private JButton jbUDP;
-   private JButton jbTCP;
-   private JButton jbExit;
-   
-   private JPanel jpButtonSouth;
-   private JButton jbSend;
+//   private JPanel jpButtonSouth;
+//   private JButton jbSend;
    
 
    public static void main(String[] arg) {
@@ -30,7 +30,7 @@ public class ClientGUI extends JFrame {
    
    public ClientGUI() {
       // Create JFrame 
-      // jfClientGUI = new JFrame();
+//       jfClientGUI = new JFrame();
       
    /*    
       // Create JMenubar
@@ -51,52 +51,42 @@ public class ClientGUI extends JFrame {
    
       // NORTH
       // Create JButton for protocol options and to exit the program
-      jpButtonNorth = new JPanel();
+      JPanel jpButtonNorth = new JPanel();
       jpButtonNorth.setPreferredSize(new Dimension(500, 50));
        
-      jbUDP = new JButton("UDP");
-      jbTCP = new JButton("TCP/IP");
-      jbExit = new JButton("Exit");
+      JButton jbUDP = new JButton("UDP");
+      JButton jbTCP = new JButton("TCP/IP");
+      JButton jbExit = new JButton("Exit");
        
        // Add JButton to JPanel
       jpButtonNorth.add(jbUDP);
       jpButtonNorth.add(jbTCP);
       jpButtonNorth.add(jbExit);
       
-   	// Add button panel to JFrame
+      // Add button panel to JFrame
       add(jpButtonNorth,BorderLayout.NORTH);
       
     /*
       // SOUTH
       // Create JButton for sending messages
-      jpButtonSouth = new JPanel();
+      */
+      JPanel jpButtonSouth = new JPanel();
       jpButtonSouth.setPreferredSize(new Dimension(500, 50));
-      
+      JButton jbSend = new JButton("Send");
       jpButtonSouth.add(jbSend);
-       
-      jbSend = new JButton("Send");
-      jpButtonSouth = new JPanel();
-      
-      
-   	// Add button panel to JFrame
-      add(jpButtonSouth,BorderLayout.SOUTH); 
-   
-   */
+        // Add button panel to JFrame
+      add(jpButtonSouth,BorderLayout.SOUTH);
       
       // Create JPanel
-      jpClient = new JPanel();
-      jtaClientChatScreen = new JTextArea(20, 45);
+      JPanel jpClient = new JPanel();
+      JTextArea jtaClientChatScreen = new JTextArea(20, 45);
       jtaClientChatScreen.setLineWrap(true);
-      scroll = new JScrollPane(jtaClientChatScreen);
+      JScrollPane scroll = new JScrollPane(jtaClientChatScreen);
       jpClient.add(scroll);
       // add(jpClient, BorderLayout.CENTER);
       
       // Add text area panel to JFrame
       add(jpClient);
-      
-      
-      
-      
       
       // Set JFrame property
       setTitle("Client GUI");
@@ -107,6 +97,6 @@ public class ClientGUI extends JFrame {
       setVisible(true);
       
       
-   } // constructor GlientGUI
+   } // constructor ClientGUI
 
 } // class ClientGUI
