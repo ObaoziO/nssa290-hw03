@@ -3,7 +3,7 @@ import javax.swing.*;
 
 public class ClientGUI extends JFrame {
    
-    private JFrame jfClientGUI;
+   private JFrame jfClientGUI;
 //   private final JPanel jpClient;
 //
 //   private JTextArea jtaClientChatScreen;
@@ -29,25 +29,22 @@ public class ClientGUI extends JFrame {
    } // main method
    
    public ClientGUI() {
-      // Create JFrame 
-//       jfClientGUI = new JFrame();
-      
-   /*    
-      // Create JMenubar
-          jmbClientMenu = new JMenuBar();
+   
+      // Create JMenubar for protocol options and to exit the program
+         JMenuBar jmbClientMenu = new JMenuBar();
          setJMenuBar(jmbClientMenu);
          
          // Create JMenu - parameter string will show on the JMenuBar
          // TODO: Could use JButtons instead
-          jmUDP = new JMenu("UDP");
-          jmTCP = new JMenu("Test 2");
-          jmQuit = new JMenu("Quit");
+         JMenu jmUDP = new JMenu("UDP");
+         JMenu jmTCP = new JMenu("Test 2");
+         JMenu jmQuit = new JMenu("Quit");
          
          // Add JMenu to JMenuBar
          jmbClientMenu.add(jmUDP);
          jmbClientMenu.add(jmTCP);
          jmbClientMenu.add(jmQuit);
-   */
+   /*
    
       // NORTH
       // Create JButton for protocol options and to exit the program
@@ -65,21 +62,30 @@ public class ClientGUI extends JFrame {
       
       // Add button panel to JFrame
       add(jpButtonNorth,BorderLayout.NORTH);
-      
-    /*
-      // SOUTH
-      // Create JButton for sending messages
-      */
+    
+   */
+    
+      // SOUTH;
+      // JPanel for border south
       JPanel jpButtonSouth = new JPanel();
+      
+      // Create JTextField for user inputs and add it to south panel
+      JTextField textField = new JTextField(20);
+      jpButtonSouth.add(textField);
+      
+      // Create JButton for sending messages and add it to south panel
       jpButtonSouth.setPreferredSize(new Dimension(500, 50));
       JButton jbSend = new JButton("Send");
       jpButtonSouth.add(jbSend);
-        // Add button panel to JFrame
+      
+      // Add send text field and button panel to JFrame
       add(jpButtonSouth,BorderLayout.SOUTH);
+            
       
       // Create JPanel
       JPanel jpClient = new JPanel();
       JTextArea jtaClientChatScreen = new JTextArea(20, 45);
+      jtaClientChatScreen.setEditable(false); // Disable the JTextArea editability - making it read-only
       jtaClientChatScreen.setLineWrap(true);
       JScrollPane scroll = new JScrollPane(jtaClientChatScreen);
       jpClient.add(scroll);
