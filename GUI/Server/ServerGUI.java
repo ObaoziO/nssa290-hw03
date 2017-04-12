@@ -27,7 +27,7 @@ public class ServerGUI extends JFrame {
 		JPanel jpStartButton = new JPanel();
 		
 		
-		// Creae JButton for starting the server
+		// Create JButton for starting the server
 		jpStartButton.setPreferredSize(new Dimension(500, 50));
 		JButton jbStart = new JButton("Start Server");
 		jpStartButton.add(jbStart);
