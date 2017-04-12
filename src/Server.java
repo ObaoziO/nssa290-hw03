@@ -1,43 +1,6 @@
 import java.net.*;
 import java.io.*;
 
-<<<<<<< HEAD
-public class Server {
-
-   public static void main(String [] args){
-   
-      ClientGUI clientGUI = new ClientGUI();
-   
-      try{
-         System.out.println("Server IP is "+ InetAddress.getLocalHost() );
-      
-         ServerSocket ss = new ServerSocket( 16789 );
-      
-         Socket cs = null;
-      
-         System.out.println("Waiting for a client");
-         cs = ss.accept();       // waits here until a client connects, then we have cs object
-         System.out.println("Have a client");
-      
-         BufferedReader br = new BufferedReader(
-                new InputStreamReader(
-                        cs.getInputStream()));
-      
-         String clientMsg = br.readLine();
-      
-         // System.out.println( "Client send: "+ clientMsg );
-         System.out.println("Client \"" + clientGUI.clientName + "\" send: "+ clientMsg );
-      
-      }
-      catch( Exception e ){
-         e.printStackTrace();
-      }
-   
-   
-   
-   } // end main
-} // ebd class
-=======
 /* Server for client / server network communication
 */
 
@@ -83,4 +46,3 @@ public class Server{
         }
     }
 }
->>>>>>> 610c9a013658ab0b006f75b122a69dcf879c23ff
