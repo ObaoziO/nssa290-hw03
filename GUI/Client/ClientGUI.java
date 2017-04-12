@@ -3,51 +3,16 @@ import javax.swing.*;
 
 public class ClientGUI extends JFrame {
    
-   private JFrame jfClientGUI;
-//   private final JPanel jpClient;
-//
-//   private JTextArea jtaClientChatScreen;
-//   private JTextField jtfClient;
-//   private JScrollPane scroll;
-//
-//   private JMenuBar jmbClientMenu;
-//   private JMenu jmUDP;
-//   private JMenu jmTCP;
-//   private JMenu jmExit;
-//
-//   private JPanel jpButtonNorth;
-//   private JButton jbUDP;
-//   private JButton jbTCP;
-//   private JButton jbExit;
-   
-//   private JPanel jpButtonSouth;
-//   private JButton jbSend;
-   
+   private JFrame jfClientGUI; 
 
    public static void main(String[] arg) {
       new ClientGUI();
    } // main method
    
-   public ClientGUI() {
-   
-      // Create JMenubar for protocol options and to exit the program
-         JMenuBar jmbClientMenu = new JMenuBar();
-         setJMenuBar(jmbClientMenu);
-         
-         // Create JMenu - parameter string will show on the JMenuBar
-         // TODO: Could use JButtons instead
-         JMenu jmUDP = new JMenu("UDP");
-         JMenu jmTCP = new JMenu("Test 2");
-         JMenu jmQuit = new JMenu("Quit");
-         
-         // Add JMenu to JMenuBar
-         jmbClientMenu.add(jmUDP);
-         jmbClientMenu.add(jmTCP);
-         jmbClientMenu.add(jmQuit);
-   /*
+   public ClientGUI() { 
    
       // NORTH
-      // Create JButton for protocol options and to exit the program
+      // Create JButtons for protocol options and to exit the program
       JPanel jpButtonNorth = new JPanel();
       jpButtonNorth.setPreferredSize(new Dimension(500, 50));
        
@@ -63,9 +28,9 @@ public class ClientGUI extends JFrame {
       // Add button panel to JFrame
       add(jpButtonNorth,BorderLayout.NORTH);
     
-   */
+   
     
-      // SOUTH;
+      // SOUTH
       // JPanel for border south
       JPanel jpButtonSouth = new JPanel();
       
