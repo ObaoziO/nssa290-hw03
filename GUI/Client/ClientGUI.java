@@ -6,13 +6,17 @@ import javax.swing.*;
 
 public class ClientGUI extends JFrame {
 
-    // Class attributes
-    private JFrame jfClientGUI;
+    // Class attribute
+    // private JFrame jfClientGUI;
+    JTextArea clientChatScreen ;
+    String clientName ;
 
-    /*
-    * Constructor
-    */
+    /**
+     * Constructor
+     */
     public ClientGUI() {
+
+        this.clientName = JOptionPane.showInputDialog(null, "What is your name?").trim();
 
         // NORTH
         // Create JButtons for protocol options and to exit the program
@@ -40,12 +44,20 @@ public class ClientGUI extends JFrame {
         JPanel jpButtonSouth = new JPanel();
       
         // Create JTextField for user inputs and add it to south panel
-        JTextField textField = new JTextField(20);
-        jpButtonSouth.add(textField);
+        JTextField message = new JTextField(20);
+        jpButtonSouth.add(message);
       
         // Create JButton for sending messages and add it to south panel
         jpButtonSouth.setPreferredSize(new Dimension(500, 50));
         JButton jbSend = new JButton("Send");
+        // Add action listener to get client message
+        jbSend.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                String text = message.getText();
+                message.setText(""); // clear text field
+                addMessage(clientName, text);
+            }
+        });
         jpButtonSouth.add(jbSend);
       
         // Add send text field and button panel to JFrame
@@ -53,10 +65,10 @@ public class ClientGUI extends JFrame {
       
         // Create JPanel
         JPanel jpClient = new JPanel();
-        JTextArea jtaClientChatScreen = new JTextArea(20, 45);
-        jtaClientChatScreen.setEditable(false); // Disable the JTextArea editability - making it read-only
-        jtaClientChatScreen.setLineWrap(true);
-        JScrollPane scroll = new JScrollPane(jtaClientChatScreen);
+        clientChatScreen = new JTextArea(20, 45);
+        clientChatScreen.setEditable(false); // Disable the JTextArea editability - making it read-only
+        clientChatScreen.setLineWrap(true);
+        JScrollPane scroll = new JScrollPane(clientChatScreen);
         jpClient.add(scroll);
         // add(jpClient, BorderLayout.CENTER);
       
@@ -73,11 +85,21 @@ public class ClientGUI extends JFrame {
       
     } // constructor ClientGUI
 
-    /*
-    * Get client name
-    * */
+    /**
+     * Get client name
+     */
     public String getClientName() {
-        return JOptionPane.showInputDialog(null, "What is your name?");
+        return clientName;
+    }
+
+    /**
+     * Add new message to clientChatScreen
+     * @param client The client's name who sent message
+     * @param msg The client's message to be displayed
+     */
+    public void addMessage(String client, String msg){
+        msg = msg.trim(); // remove whitespace
+        clientChatScreen.append(client + ": " + msg + "\n");
     }
 
 } // class ClientGUI
