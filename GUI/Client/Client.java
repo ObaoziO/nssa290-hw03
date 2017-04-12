@@ -6,7 +6,7 @@ public class Client {
 
     // class variables
 //    String clientName = "";
-    ClientGUI clientGUI ;
+    public ClientGUI clientGUI ;
 
     /*
     * Constructor

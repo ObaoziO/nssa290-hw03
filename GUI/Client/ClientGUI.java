@@ -11,8 +11,8 @@ public class ClientGUI extends JFrame {
 
     // Class attribute
     // private JFrame jfClientGUI;
-    JTextArea clientChatScreen ;
-    String clientName ;
+    public JTextArea clientChatScreen;
+    public String clientName;
 
     /**
      * Constructor
