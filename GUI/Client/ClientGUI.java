@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import javax.swing.*;
 
 
@@ -56,6 +59,24 @@ public class ClientGUI extends JFrame {
                 String text = message.getText();
                 message.setText(""); // clear text field
                 addMessage(clientName, text);
+                try{
+                    Socket s = new Socket( "localhost", 16789 );
+                    InputStream in = s.getInputStream();
+                    BufferedReader bin = new BufferedReader(new InputStreamReader( in ));
+
+                    OutputStream out = s.getOutputStream();
+                    PrintWriter pout = new PrintWriter(out);
+
+                    pout.println( text );
+                    pout.flush();
+
+                }
+                catch( UnknownHostException un ){
+                    un.printStackTrace();
+                }
+                catch( IOException ioe){
+                    ioe.printStackTrace();
+                }
             }
         });
         jpButtonSouth.add(jbSend);
