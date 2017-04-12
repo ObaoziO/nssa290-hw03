@@ -59,24 +59,6 @@ public class ClientGUI extends JFrame {
                 String text = message.getText();
                 message.setText(""); // clear text field
                 addMessage(clientName, text);
-                try{
-                    Socket s = new Socket( "localhost", 16789 );
-                    InputStream in = s.getInputStream();
-                    BufferedReader bin = new BufferedReader(new InputStreamReader( in ));
-
-                    OutputStream out = s.getOutputStream();
-                    PrintWriter pout = new PrintWriter(out);
-
-                    pout.println( text );
-                    pout.flush();
-
-                }
-                catch( UnknownHostException un ){
-                    un.printStackTrace();
-                }
-                catch( IOException ioe){
-                    ioe.printStackTrace();
-                }
             }
         });
         jpButtonSouth.add(jbSend);
@@ -114,13 +96,33 @@ public class ClientGUI extends JFrame {
     }
 
     /**
-     * Add new message to clientChatScreen
+     * Add new message to clientChatScreen and send to server
      * @param client The client's name who sent message
      * @param msg The client's message to be displayed
      */
     public void addMessage(String client, String msg){
         msg = msg.trim(); // remove whitespace
-        clientChatScreen.append(client + ": " + msg + "\n");
+        msg = client + ": " + msg + "\n";
+        clientChatScreen.append(msg);
+
+        try{
+            Socket s = new Socket( "localhost", 16789 );
+            InputStream in = s.getInputStream();
+            BufferedReader bin = new BufferedReader(new InputStreamReader( in ));
+
+            OutputStream out = s.getOutputStream();
+            PrintWriter pout = new PrintWriter(out);
+
+            pout.println( msg );
+            pout.flush();
+
+        }
+        catch( UnknownHostException un ){
+            un.printStackTrace();
+        }
+        catch( IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
 } // class ClientGUI
