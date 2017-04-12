@@ -19,6 +19,7 @@ public class ClientGUI extends JFrame {
       JButton jbUDP = new JButton("UDP");
       JButton jbTCP = new JButton("TCP/IP");
       JButton jbExit = new JButton("Exit");
+      jbExit.addActionListener(new CloseListener());
        
        // Add JButton to JPanel
       jpButtonNorth.add(jbUDP);
@@ -61,7 +62,7 @@ public class ClientGUI extends JFrame {
       
       // Set JFrame property
       setTitle("Client GUI");
-      //  setLocationRelativeTo(null); //center window - not working
+      // setLocationRelativeTo(null); //center window - not working
       setLocation(380, 150);
       setSize(600, 500);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
