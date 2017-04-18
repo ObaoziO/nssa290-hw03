@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
@@ -11,21 +13,24 @@ public class ServerGUI extends JFrame {
 	
 	public ServerGUI(){
 		
-		// file options and option to properly close the server
-		JMenuBar jmbClientMenu = new JMenuBar();
-		setJMenuBar(jmbClientMenu);
-		
-		// Create JMenu 
-		JMenu jmFile = new JMenu("File");
-		JMenu jmQuit = new JMenu("Quit");
-		
-		// Add to JMenu
-		jmbClientMenu.add(jmFile);
-		jmbClientMenu.add(jmQuit);
-		
+		// Create JPanel for quit button
+        JPanel jpButtonNorth = new JPanel();
+        jpButtonNorth.setPreferredSize(new Dimension(500, 50));
+        // Create quit button
+        JButton jbQuit = new JButton("Quit");
+        jbQuit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.exit(0);
+            }
+        });
+        // Add button to JPanel
+        jpButtonNorth.add(jbQuit);
+        // Add JPanel to JFrame
+        add(jpButtonNorth,BorderLayout.NORTH);
+
+
 		// JPanel for Start Button
 		JPanel jpStartButton = new JPanel();
-		
 		
 		// Create JButton for starting the server
 		jpStartButton.setPreferredSize(new Dimension(500, 50));

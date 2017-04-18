@@ -28,8 +28,8 @@ public class ClientGUI extends JFrame {
 
         JButton jbUDP = new JButton("UDP");
         JButton jbTCP = new JButton("TCP/IP");
-        JButton jbExit = new JButton("Exit");
-        jbExit.addActionListener(new ActionListener() {
+        JButton jbQuit = new JButton("Quit");
+        jbQuit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.exit(0);
             }
@@ -38,7 +38,7 @@ public class ClientGUI extends JFrame {
         // Add JButtons to JPanel
         jpButtonNorth.add(jbUDP);
         jpButtonNorth.add(jbTCP);
-        jpButtonNorth.add(jbExit);
+        jpButtonNorth.add(jbQuit);
         // Add JPanel to JFrame
         add(jpButtonNorth,BorderLayout.NORTH);
     
