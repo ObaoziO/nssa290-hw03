@@ -13,21 +13,35 @@ public class ClientGUI extends JFrame {
     // private JFrame jfClientGUI;
     public JTextArea clientChatScreen;
     public String clientName;
+    public String protocol;
+    public String ip;
 
     /**
      * Constructor
      */
     public ClientGUI() {
 
-        this.clientName = JOptionPane.showInputDialog(null, "What is your name?").trim();
+        // Show dialogue on startup - prompt for client input
+        JTextField inputName = new JTextField();
+        JTextField inputProtocol = new JTextField();
+        JTextField inputIp = new JTextField();
+        Object[] inputMessages = {
+                "Enter Your name:", inputName,
+                "TCP/UDP:", inputProtocol,
+                "IP Address:", inputIp,
+        };
+        int option = JOptionPane.showConfirmDialog(null, inputMessages, "Enter all your values", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION){
+            this.clientName = inputName.getText().trim();
+            this.protocol = inputProtocol.getText().trim();
+            this.ip = inputIp.getText().trim();
+        }
 
         // NORTH
         // Create JButtons for protocol options and to exit the program
         JPanel jpButtonNorth = new JPanel();
         jpButtonNorth.setPreferredSize(new Dimension(500, 50));
 
-        JButton jbUDP = new JButton("UDP");
-        JButton jbTCP = new JButton("TCP/IP");
         JButton jbQuit = new JButton("Quit");
         jbQuit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -35,9 +49,7 @@ public class ClientGUI extends JFrame {
             }
         });
        
-        // Add JButtons to JPanel
-        jpButtonNorth.add(jbUDP);
-        jpButtonNorth.add(jbTCP);
+        // Add JButton to JPanel
         jpButtonNorth.add(jbQuit);
         // Add JPanel to JFrame
         add(jpButtonNorth,BorderLayout.NORTH);
@@ -122,6 +134,20 @@ public class ClientGUI extends JFrame {
         }
         catch( IOException ioe){
             ioe.printStackTrace();
+        }
+    }
+
+    /*
+    * Main Method
+    * */
+    public static void main(String[] arg) {
+        ClientGUI gui = new ClientGUI();
+
+        // Create applicable client based on input protocol
+        if(gui.protocol.charAt(0) == 'T'){
+            TCPClient tcpClient = new TCPClient();
+        } else { // UDP
+            UDPClient udpClient = new UDPClient();
         }
     }
 

@@ -4,10 +4,16 @@ import java.io.*;
 /* Server for client / server network communication
 */
 
-public class Server{
-    public static void main(String [] args) {
+public class Server extends Thread{
+//    public static void main(String [] args) {
+    ServerSocket ss;
+
+    public Server(ServerSocket ss){
+        this.ss = ss;
+    }
+
+    public void run() {
         String clientMsg;
-        ServerSocket ss = null;
         BufferedReader br;
         PrintWriter opw;
 
