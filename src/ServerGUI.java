@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.ServerSocket;
 import javax.swing.*;
 
 
@@ -8,7 +10,9 @@ public class ServerGUI extends JFrame {
 	
 	// main method
 	public static void main(String[] arg){
-		new ServerGUI();	
+		new ServerGUI();
+		Server server = new Server();
+		server.start();
 	}
 	
 	public ServerGUI(){

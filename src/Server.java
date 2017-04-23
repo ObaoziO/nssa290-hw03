@@ -5,12 +5,8 @@ import java.io.*;
 */
 
 public class Server extends Thread{
-//    public static void main(String [] args) {
-    ServerSocket ss;
 
-    public Server(ServerSocket ss){
-        this.ss = ss;
-    }
+//    public Server(){}
 
     public void run() {
         String clientMsg;
@@ -20,7 +16,7 @@ public class Server extends Thread{
         try {
             System.out.println("getLocalHost: "+InetAddress.getLocalHost() );
             System.out.println("getByName:    "+InetAddress.getByName("localhost") );
-            ss = new ServerSocket(16789);
+            ServerSocket ss = new ServerSocket(16789);
             Socket cs = null;
             while(true){ 		// run forever once up
                 try{

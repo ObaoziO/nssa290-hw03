@@ -32,23 +32,22 @@ public class ClientGUI extends JFrame {
         };
         int option = JOptionPane.showConfirmDialog(null, inputMessages, "Enter all your values", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION){
+            // TODO - change TCP/UDP to radio button
             this.clientName = inputName.getText().trim();
             this.protocol = inputProtocol.getText().trim();
             this.ip = inputIp.getText().trim();
         }
 
         // NORTH
-        // Create JButtons for protocol options and to exit the program
+        // Create JButton to quit the program
         JPanel jpButtonNorth = new JPanel();
         jpButtonNorth.setPreferredSize(new Dimension(500, 50));
-
         JButton jbQuit = new JButton("Quit");
         jbQuit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 System.exit(0);
             }
         });
-       
         // Add JButton to JPanel
         jpButtonNorth.add(jbQuit);
         // Add JPanel to JFrame
