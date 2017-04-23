@@ -4,15 +4,18 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.ServerSocket;
 import javax.swing.*;
-
+//TODO - have jlTp show server IPAddress to connect to
 
 public class ServerGUI extends JFrame {
-	
+//    private String ipAddress;
+    JLabel jlIp ;
+
 	// main method
 	public static void main(String[] arg){
-		new ServerGUI();
-		Server server = new Server();
-		server.start();
+        Server server = new Server();
+        server.start();
+	    ServerGUI gui = new ServerGUI();
+        gui.setIpAddressLabel(server.ipAddress.toString());
 	}
 	
 	public ServerGUI(){
@@ -27,22 +30,15 @@ public class ServerGUI extends JFrame {
                 System.exit(0);
             }
         });
+        // Create JLabel to show IP address needed to connect
+        jlIp = new JLabel();
         // Add button to JPanel
         jpButtonNorth.add(jbQuit);
+        // Add label to JPanel
+        jpButtonNorth.add(jlIp);
         // Add JPanel to JFrame
         add(jpButtonNorth,BorderLayout.NORTH);
 
-
-		// JPanel for Start Button
-		JPanel jpStartButton = new JPanel();
-		
-		// Create JButton for starting the server
-		jpStartButton.setPreferredSize(new Dimension(500, 50));
-		JButton jbStart = new JButton("Start Server");
-		jpStartButton.add(jbStart);
-		
-		// add JPanel to JFrame
-		add(jpStartButton, BorderLayout.SOUTH);
 		
 		// Create JPanel that will contain text for server display
 		JPanel jpServer = new JPanel();
@@ -51,8 +47,6 @@ public class ServerGUI extends JFrame {
 		jtaServerScreen.setLineWrap(true);
 		JScrollPane scroll = new JScrollPane(jtaServerScreen);
 		jpServer.add(jtaServerScreen);
-		
-		
 		// Add JPanel to JFrame
 		add(jpServer);
 		
@@ -62,9 +56,11 @@ public class ServerGUI extends JFrame {
 		setSize(600, 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-		
-		
-		
+
 	}
+
+	private void setIpAddressLabel(String ip){
+	    jlIp.setText(ip);
+    }
 	
 }

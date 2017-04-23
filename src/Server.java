@@ -5,8 +5,10 @@ import java.io.*;
 */
 
 public class Server extends Thread{
-
-//    public Server(){}
+    InetAddress ipAddress;
+    public Server(){
+//        this.ipAddress = InetAddress.getLocalHost();
+    }
 
     public void run() {
         String clientMsg;
@@ -14,7 +16,8 @@ public class Server extends Thread{
         PrintWriter opw;
 
         try {
-            System.out.println("getLocalHost: "+InetAddress.getLocalHost() );
+            this.ipAddress = InetAddress.getLocalHost();
+            System.out.println("getLocalHost: "+ipAddress );
             System.out.println("getByName:    "+InetAddress.getByName("localhost") );
             ServerSocket ss = new ServerSocket(16789);
             Socket cs = null;
